@@ -7,5 +7,3 @@ matplotlib
 Pillow
 PyYAML
 tqdm
-opencv-python
-openslide-python

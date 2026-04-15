@@ -1,6 +1,6 @@
 # MLHistologyAnalysis Public Repository
 
-![Repository header](figures/RepHeader.png)
+![Project Banner](figures/RepoHeader.png)
 
 The current trained models are specific to rainbow trout distal intestine cross-sectional whole-slide histology. The workflow may be adaptable to other salmonid histology datasets, but that has not been established here.
 
@@ -35,27 +35,27 @@ See:
 
 ## Current Model Summary
 
-Three proof-of-principle model settings are represented in the staged public-safe results:
+Three proof-of-principle model settings are represented in the staged results:
 
 ### 1. Enteritis Binary Baseline
 
 - Target: binary enteritis endpoint under weak supervision
-- Public interpretation: modest but real signal at the analysis-unit level
-- Public-safe summary: analysis-unit AUROC `0.787`, analysis-unit AUPRC `0.392`, with `topk_mean` used as the primary aggregation method
+- Interpretation: modest but real signal at the analysis-unit level
+- Summary: analysis-unit AUROC `0.787`, analysis-unit AUPRC `0.392`, with `topk_mean` used as the primary aggregation method
 - Main limitation: the endpoint is broad, while the supervision remains weak and slide-level
 
 ### 2. Mononuclear Infiltration 5-Level Classifier
 
 - Target: five-level mononuclear infiltration score
-- Public interpretation: biologically informative exploratory result
-- Public-safe summary: analysis-unit accuracy `0.587`, weighted F1 `0.596`, quadratic weighted kappa `0.355`
+- Interpretation: biologically informative exploratory result
+- Summary: analysis-unit accuracy `0.587`, weighted F1 `0.596`, quadratic weighted kappa `0.355`
 - Main limitation: sparse representation of higher-severity classes limited learnability and evaluation
 
 ### 3. Mononuclear Infiltration Collapsed Binary Classifier
 
 - Target: low infiltration (`1-2`) versus moderate-to-severe infiltration (`3-5`)
-- Public interpretation: strongest practical proof-of-principle result among the staged model variants
-- Public-safe summary: analysis-unit AUROC `0.821`, analysis-unit AUPRC `0.619`, with `topk_mean` aggregation
+- Interpretation: strongest practical proof-of-principle result among the staged model variants
+- Summary: analysis-unit AUROC `0.821`, analysis-unit AUPRC `0.619`, with `topk_mean` aggregation
 - Rationale: collapsing the scale reduces class sparsity and aligns better with the current amount of supervision
 
 These results should be read as workflow-level proof of principle. Current limitations appear to be driven more by phenotype imbalance, sparse severe cases, and weak slide-level supervision than by the computational workflow itself.
@@ -63,7 +63,7 @@ These results should be read as workflow-level proof of principle. Current limit
 ## What Is Included
 
 - Python scripts for ROI extraction, tiling, training, evaluation, and inference
-- Public-safe YAML configuration templates
+- YAML configuration templates
 - Slurm templates with placeholders
 - Template manifests with synthetic example rows only
 - Summary result tables for the staged model runs
