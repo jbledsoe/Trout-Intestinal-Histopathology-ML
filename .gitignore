@@ -1,0 +1,27 @@
+.DS_Store
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+env/
+venv/
+results/
+logs/
+checkpoints/
+data/
+dataset_release/
+
+# Python & Jupyter
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# Data & Models (Protect your storage)
+*.zip
+*.tar.gz
+/data/
+/models/*.pth
+
+# OS files
+.DS_Store
+Thumbs.db

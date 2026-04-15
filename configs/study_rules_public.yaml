@@ -1,0 +1,18 @@
+Study1:
+  selection_mode: keep_n_left_to_right
+  expected_n: 3
+  output_labels: ["L", "C", "R"]
+  naming_mode: suffix_labels
+
+Study2:
+  selection_mode: keep_largest
+  expected_n: 1
+  output_labels: ["whole"]
+  naming_mode: no_suffix
+
+Study3:
+  selection_mode: keep_bottom_left_among_major_components
+  expected_n_major: 6
+  output_labels: ["whole"]
+  naming_mode: no_suffix
+

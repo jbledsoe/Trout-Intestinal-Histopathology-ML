@@ -1,0 +1,71 @@
+experiment_name: enteritis_inference_public_demo
+
+data:
+  data_root: .
+  tile_manifest_path: ./outputs/tiling/manifests/tile_manifest.csv
+  tile_path_column: tile_path
+  analysis_unit_id_column: analysis_unit_id
+  study_id_column: study_key
+  split_column: split
+  task_column: task
+  allowed_tasks:
+    - enteritis
+  allowed_read_levels:
+    - 0
+  require_tile_exists: true
+  drop_missing_tiles: true
+  default_split: inference
+  metadata_columns:
+    - slide_id
+    - sample_id
+    - section_label
+    - study_key
+    - tissue_fraction
+    - tile_x_level0
+    - tile_y_level0
+  metadata_joins: []
+
+task:
+  name: enteritis
+  mode: binary
+  num_classes: 2
+  label_column: enteritis_bin
+  label_values: [0, 1]
+  label_map:
+    0: 0
+    1: 1
+  class_names:
+    - negative
+    - positive
+  positive_class_index: 1
+
+model:
+  backbone: resnet18
+  pretrained: false
+  checkpoint_path: ./local_weights/enteritis_best.pt
+  checkpoint_key: auto
+  strict: true
+
+inference:
+  device: cuda
+  batch_size: 64
+  num_workers: 4
+  pin_memory: true
+  use_amp: true
+
+aggregation:
+  method: topk_mean
+  top_k: 10
+  threshold: 0.5
+
+augmentation:
+  image_size: 224
+  normalize_mean: [0.485, 0.456, 0.406]
+  normalize_std: [0.229, 0.224, 0.225]
+
+output:
+  root_dir: results
+  export_top_tiles: true
+  top_tiles_global_n: 50
+  top_tiles_per_analysis_unit: 3
+  save_summary_figures: true

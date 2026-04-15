@@ -1,0 +1,72 @@
+experiment_name: mononuclear_5level_inference_public_demo
+
+data:
+  data_root: .
+  tile_manifest_path: ./outputs/tiling/manifests/tile_manifest.csv
+  tile_path_column: tile_path
+  analysis_unit_id_column: analysis_unit_id
+  study_id_column: study_key
+  split_column: split
+  task_column: task
+  allowed_tasks:
+    - mononuclear
+  allowed_read_levels:
+    - 0
+  require_tile_exists: true
+  drop_missing_tiles: true
+  default_split: inference
+  metadata_columns:
+    - slide_id
+    - sample_id
+    - section_label
+    - study_key
+    - tissue_fraction
+  metadata_joins: []
+
+task:
+  name: mononuclear_5level
+  mode: multiclass
+  num_classes: 5
+  label_column: mononuclearinfiltration
+  label_values: [1, 2, 3, 4, 5]
+  label_map:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  class_names:
+    - low_1
+    - low_2
+    - moderate_3
+    - marked_4
+    - severe_5
+
+model:
+  backbone: resnet18
+  pretrained: false
+  checkpoint_path: ./local_weights/mononuclear_5level_best.pt
+  checkpoint_key: auto
+  strict: true
+
+inference:
+  device: cuda
+  batch_size: 64
+  num_workers: 4
+  pin_memory: true
+  use_amp: true
+
+aggregation:
+  method: mean_probability
+
+augmentation:
+  image_size: 224
+  normalize_mean: [0.485, 0.456, 0.406]
+  normalize_std: [0.229, 0.224, 0.225]
+
+output:
+  root_dir: results
+  export_top_tiles: true
+  top_tiles_global_n: 50
+  top_tiles_per_analysis_unit: 3
+  save_summary_figures: true

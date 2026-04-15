@@ -1,0 +1,10 @@
+tiling:
+  tile_size_level0: 256
+  tile_size_px: 224
+  stride_level0: 128
+  min_tissue_fraction: 0.6
+  max_tiles_per_roi: 75
+  selection_strategy: spatial_farthest
+  white_threshold: 220
+  image_format: png
+

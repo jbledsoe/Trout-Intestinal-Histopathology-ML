@@ -1,0 +1,32 @@
+global:
+  thumbnail_max_dim: 2048
+  white_threshold: 220
+  morphology_kernel_size: 7
+  min_component_area_thumb: 5000
+  bbox_margin_ratio: 0.02
+  preview_max_dim: 1024
+
+default_layout:
+  selection_mode: keep_largest
+  output_labels: ["whole"]
+  naming_mode: no_suffix
+
+study_layouts:
+  multi_section_left_to_right:
+    selection_mode: keep_n_left_to_right
+    expected_n: 3
+    output_labels: ["L", "C", "R"]
+    naming_mode: suffix_labels
+
+  single_section_whole_slide:
+    selection_mode: keep_largest
+    output_labels: ["whole"]
+    naming_mode: no_suffix
+
+  representative_from_major_components:
+    selection_mode: keep_representative
+    candidate_pool: 6
+    representative_rule: bottom_left
+    output_labels: ["whole"]
+    naming_mode: no_suffix
+

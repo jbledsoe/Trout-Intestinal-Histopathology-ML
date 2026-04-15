@@ -1,0 +1,3 @@
+slide_id,analysis_unit_id,section_label,manual_qc_status,include_for_tiling,reviewer_notes
+SLIDE_001,SAMPLE_001_L,L,approved,1,Left section looks usable
+SLIDE_001,SAMPLE_001_R,R,reject,0,Right section contains fold artifact

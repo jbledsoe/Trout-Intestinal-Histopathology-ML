@@ -1,0 +1,4 @@
+slide_id,study_key,sample_id,svs_path,task,split,target_label,notes
+SLIDE_001,multi_section_left_to_right,SAMPLE_001,slides/SLIDE_001.svs,enteritis,train,0,Example three-section slide
+SLIDE_002,single_section_whole_slide,SAMPLE_002,slides/SLIDE_002.svs,inference,holdout,,Example whole-slide retention
+SLIDE_003,representative_from_major_components,SAMPLE_003,slides/SLIDE_003.svs,mononuclear,val,3,Example representative-section study

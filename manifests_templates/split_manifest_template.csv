@@ -1,0 +1,4 @@
+analysis_unit_id,study_id,task,split,label,split_group,is_evaluable,slide_quality_status
+EXAMPLE_AU_001,StudyA,enteritis,train,0,EXAMPLE_GROUP_001,1,evaluable
+EXAMPLE_AU_002,StudyB,enteritis,val,1,EXAMPLE_GROUP_002,1,evaluable
+
